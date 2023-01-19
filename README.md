@@ -1,6 +1,6 @@
 # CaseUseDDD
 ## Implementar caso de uso de agregarDirectrizAMentoria() con AAA
 
-## Enviar link de Repositorio GitHub  al correo: adryan.ynfante@sofka.com.co 
+## Realizar Fork
 
-## Asunto del correo: Implementación de Caso de uso DDD
+## Entrega a traves de Pull requests

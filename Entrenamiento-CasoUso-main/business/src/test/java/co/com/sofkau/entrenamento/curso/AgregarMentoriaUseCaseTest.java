@@ -22,7 +22,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 
@@ -41,6 +40,7 @@ class AgregarMentoriaUseCaseTest {
         CursoId coursoId = CursoId.of("ddddd");
         Nombre nombre = new Nombre("Aprendiendo de casos de usos");
         Fecha fecha = new Fecha(LocalDateTime.now(), LocalDate.now());
+
         var command = new AgregarMentoria( coursoId,  nombre,  fecha);
 
         when(repository.getEventsBy("ddddd")).thenReturn(history());
@@ -60,13 +60,16 @@ class AgregarMentoriaUseCaseTest {
     }
 
     private List<DomainEvent> history() {
+        //Nombre Curso
         Nombre nombre = new Nombre("DDD");
+        //Descripcion curso
         Descripcion descripcion = new Descripcion("Curso complementario para el training");
         var event = new CursoCreado(
                 nombre,
                 descripcion
         );
         event.setAggregateRootId("xxxxx");
+
         return List.of(event);
     }
 

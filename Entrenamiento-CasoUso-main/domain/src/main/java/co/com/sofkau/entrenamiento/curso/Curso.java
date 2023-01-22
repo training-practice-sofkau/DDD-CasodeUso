@@ -9,29 +9,31 @@ import co.com.sofkau.entrenamiento.curso.values.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 public class Curso extends AggregateEvent<CursoId> {
+    protected CursoId cursoId;
     protected Nombre nombre;
     protected Descripcion descripcion;
     protected Coach coach;
     protected Set<Contenido> contenidos;
     protected Map<MentoriaId, Mentoria> mentorias;
 
-    public Curso(CursoId entityId, Nombre nombre, Descripcion descripcion) {
-        super(entityId);
+    public Curso(CursoId cursoId, Nombre nombre, Descripcion descripcion) {
+        super(cursoId);
         appendChange(new CursoCreado(nombre, descripcion)).apply();
         subscribe(new CursoEventChange(this));
     }
 
-    private Curso(CursoId entityId){
-        super(entityId);
+    private Curso(CursoId cursoId){
+        super(cursoId);
         subscribe(new CursoEventChange(this));
     }
 
-
-    public static Curso from(CursoId entityId, List<DomainEvent> events){
-        var curso = new Curso(entityId);
+  ////CREAR CONSTRUCTOR CON MENTORIA..
+    public static Curso from(CursoId cursoId, List<DomainEvent> events){
+        var curso = new Curso(cursoId);
         events.forEach(curso::applyEvent);
         return curso;
     }
@@ -45,6 +47,10 @@ public class Curso extends AggregateEvent<CursoId> {
         appendChange(new DirectrizAgregadaAMentoria(mentoriaId, directiz)).apply();
     }
 
+    protected Optional<Map.Entry<MentoriaId, Mentoria>> findMentoriaId(MentoriaId mentoriaId) {
+        return this.mentorias.entrySet().stream().filter(mentoria -> mentoria.getKey().equals(mentoriaId)).findFirst();
+
+    }
     public Nombre nombre() {
         return nombre;
     }
@@ -57,6 +63,7 @@ public class Curso extends AggregateEvent<CursoId> {
         return coach;
     }
 
-    public void agregarDirectrizMentoria(MentoriaId mentoriaId, Directiz directiz) {
+    public CursoId getCursoId() {
+        return cursoId;
     }
 }

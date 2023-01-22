@@ -22,6 +22,8 @@ public class CursoEventChange extends EventChange {
             var mentoria = new Mentoria(mentoriaId, event.getNombre(), event.getFecha());
             //TODO: validar que no pueda tener mas de 10 mentorias por curso
             curso.mentorias.put(mentoriaId, mentoria);
+
+            System.out.println(mentoria);
         });
 
         apply((DirectrizAgregadaAMentoria event) -> {

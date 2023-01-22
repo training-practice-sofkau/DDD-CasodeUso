@@ -14,7 +14,7 @@ public class AgregarDirectrizMentoriaUseCase extends UseCase<RequestCommand<Agre
         var curso = Curso.from(
                 command.getCursoId(), repository().getEventsBy(command.getCursoId().value())
         );
-        curso.agregarDirectrizMentoria(command.getMentoriaId(),command.getDirectiz());
+        curso.agregarDirectrizDeMentoria(command.getMentoriaId(),command.getDirectiz());
         emit().onResponse(new ResponseEvents(curso.getUncommittedChanges()));
 
     }

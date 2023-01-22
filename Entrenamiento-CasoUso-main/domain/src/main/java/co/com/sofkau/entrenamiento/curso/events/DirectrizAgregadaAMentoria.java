@@ -9,7 +9,7 @@ public class DirectrizAgregadaAMentoria extends DomainEvent {
     private final Directiz directiz;
 
     public DirectrizAgregadaAMentoria(MentoriaId mentoriaId, Directiz directiz) {
-        super("co.com.sofkau.entrenamiento.DirectrizAgregadaAMentoria");
+        super("co.com.sofkau.entrenamiento.curso.events.DirectrizAgregadaAMentoria");
         this.mentoriaId = mentoriaId;
         this.directiz = directiz;
     }

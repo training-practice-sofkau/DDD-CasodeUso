@@ -38,7 +38,7 @@ public class AgregarDirectrizMentoriaUseCaseTest {
     void agregarDirectrizAMentoria() {
 
         CursoId cursoId = CursoId.of("idCurso");
-        MentoriaId mentoriaId = MentoriaId.of("idCurso");
+        MentoriaId mentoriaId = MentoriaId.of("idMentoria");
         Directiz directiz = new Directiz("mate");
 
 
@@ -66,7 +66,7 @@ public class AgregarDirectrizMentoriaUseCaseTest {
         Nombre nombre = new Nombre("Mate");
         Descripcion descripcion = new Descripcion("Intensivo");
 
-        MentoriaId mentoriaId = MentoriaId.of("idCurso");
+        MentoriaId mentoriaId = MentoriaId.of("idMentoria");
         Fecha fecha = new Fecha(LocalDateTime.now(),LocalDate.now());
         Nombre nombre2 = new Nombre("Mentoria");
 
@@ -81,7 +81,7 @@ public class AgregarDirectrizMentoriaUseCaseTest {
 
         event2.setAggregateRootId(cursoId.value());
 
-        return List.of(event, event2);
+        return List.of(event,event2);
     }
 }
 

@@ -7,6 +7,7 @@ import co.com.sofkau.entrenamiento.curso.values.MentoriaId;
 import co.com.sofkau.entrenamiento.curso.values.Nombre;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Mentoria extends Entity<MentoriaId> {
@@ -24,6 +25,7 @@ public class Mentoria extends Entity<MentoriaId> {
 
     public void agregarDirectiz(Directiz directiz){
         //TODO: validaciones
+        Objects.requireNonNull(directiz);
         this.directices.add(directiz);
     }
 
